@@ -148,7 +148,7 @@ func TestTreeWildcard(t *testing.T) {
 		"/src/*filepath",
 		"/search/",
 		"/search/:query",
-		"/search/gin-gonic",
+		"/search/robert-pkg",
 		"/search/google",
 		"/user_:name",
 		"/user_:name/about",
@@ -216,7 +216,7 @@ func TestTreeWildcard(t *testing.T) {
 		{"/search/someth!ng+in+ünìcodé", false, "/search/:query", Params{Param{Key: "query", Value: "someth!ng+in+ünìcodé"}}},
 		{"/search/someth!ng+in+ünìcodé/", true, "", Params{Param{Key: "query", Value: "someth!ng+in+ünìcodé"}}},
 		{"/search/gin", false, "/search/:query", Params{Param{"query", "gin"}}},
-		{"/search/gin-gonic", false, "/search/gin-gonic", nil},
+		{"/search/robert-pkg", false, "/search/robert-pkg", nil},
 		{"/search/google", false, "/search/google", nil},
 		{"/user_gopher", false, "/user_:name", Params{Param{Key: "name", Value: "gopher"}}},
 		{"/user_gopher/about", false, "/user_:name/about", Params{Param{Key: "name", Value: "gopher"}}},
@@ -229,7 +229,7 @@ func TestTreeWildcard(t *testing.T) {
 		{"/a", false, "/:cc", Params{Param{Key: "cc", Value: "a"}}},
 		// * Error with argument being intercepted
 		// new PR handle (/all /all/cc /a/cc)
-		// fix PR: https://github.com/gin-gonic/gin/pull/2796
+		// fix PR: https://github.com/robert-pkg/gin/pull/2796
 		{"/all", false, "/:cc", Params{Param{Key: "cc", Value: "all"}}},
 		{"/d", false, "/:cc", Params{Param{Key: "cc", Value: "d"}}},
 		{"/ad", false, "/:cc", Params{Param{Key: "cc", Value: "ad"}}},

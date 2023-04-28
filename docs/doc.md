@@ -95,11 +95,11 @@ Gin enables `MsgPack` rendering feature by default. But you can disable this fea
 go build -tags=nomsgpack .
 ```
 
-This is useful to reduce the binary size of executable files. See the [detail information](https://github.com/gin-gonic/gin/pull/1852).
+This is useful to reduce the binary size of executable files. See the [detail information](https://github.com/robert-pkg/gin/pull/1852).
 
 ## API Examples
 
-You can find a number of ready-to-run examples at [Gin examples repository](https://github.com/gin-gonic/examples).
+You can find a number of ready-to-run examples at [Gin examples repository](https://github.com/robert-pkg/examples).
 
 ### Using GET, POST, PUT, PATCH, DELETE and OPTIONS
 
@@ -262,9 +262,9 @@ ids: map[b:hello a:1234]; names: map[second:tianou first:thinkerou]
 
 #### Single file
 
-References issue [#774](https://github.com/gin-gonic/gin/issues/774) and detail [example code](https://github.com/gin-gonic/examples/tree/master/upload-file/single).
+References issue [#774](https://github.com/robert-pkg/gin/issues/774) and detail [example code](https://github.com/robert-pkg/examples/tree/master/upload-file/single).
 
-`file.Filename` **SHOULD NOT** be trusted. See [`Content-Disposition` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#Directives) and [#1693](https://github.com/gin-gonic/gin/issues/1693)
+`file.Filename` **SHOULD NOT** be trusted. See [`Content-Disposition` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#Directives) and [#1693](https://github.com/robert-pkg/gin/issues/1693)
 
 > The filename is always optional and must not be used blindly by the application: path information should be stripped, and conversion to the server file system rules should be done.
 
@@ -297,7 +297,7 @@ curl -X POST http://localhost:8080/upload \
 
 #### Multiple files
 
-See the detail [example code](https://github.com/gin-gonic/examples/tree/master/upload-file/multiple).
+See the detail [example code](https://github.com/robert-pkg/examples/tree/master/upload-file/multiple).
 
 ```go
 func main() {
@@ -667,7 +667,7 @@ Skip validate: when running the above example using the above the `curl` command
 
 ### Custom Validators
 
-It is also possible to register custom validators. See the [example code](https://github.com/gin-gonic/examples/tree/master/custom-validation/server.go).
+It is also possible to register custom validators. See the [example code](https://github.com/robert-pkg/examples/tree/master/custom-validation/server.go).
 
 ```go
 package main
@@ -676,8 +676,8 @@ import (
   "net/http"
   "time"
 
-  "github.com/gin-gonic/gin"
-  "github.com/gin-gonic/gin/binding"
+  "github.com/robert-pkg/gin"
+  "github.com/robert-pkg/gin/binding"
   "github.com/go-playground/validator/v10"
 )
 
@@ -731,11 +731,11 @@ $ curl "localhost:8085/bookable?check_in=2000-03-09&check_out=2000-03-10"
 ```
 
 [Struct level validations](https://github.com/go-playground/validator/releases/tag/v8.7) can also be registered this way.
-See the [struct-lvl-validation example](https://github.com/gin-gonic/examples/tree/master/struct-lvl-validations) to learn more.
+See the [struct-lvl-validation example](https://github.com/robert-pkg/examples/tree/master/struct-lvl-validations) to learn more.
 
 ### Only Bind Query String
 
-`ShouldBindQuery` function only binds the query params and not the post data. See the [detail information](https://github.com/gin-gonic/gin/issues/742#issuecomment-315953017).
+`ShouldBindQuery` function only binds the query params and not the post data. See the [detail information](https://github.com/robert-pkg/gin/issues/742#issuecomment-315953017).
 
 ```go
 package main
@@ -744,7 +744,7 @@ import (
   "log"
   "net/http"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 type Person struct {
@@ -772,7 +772,7 @@ func startPage(c *gin.Context) {
 
 ### Bind Query String or Post Data
 
-See the [detail information](https://github.com/gin-gonic/gin/issues/742#issuecomment-264681292).
+See the [detail information](https://github.com/robert-pkg/gin/issues/742#issuecomment-264681292).
 
 ```go
 package main
@@ -782,7 +782,7 @@ import (
   "net/http"
   "time"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 type Person struct {
@@ -803,7 +803,7 @@ func startPage(c *gin.Context) {
   var person Person
   // If `GET`, only `Form` binding engine (`query`) used.
   // If `POST`, first checks the `content-type` for `JSON` or `XML`, then uses `Form` (`form-data`).
-  // See more at https://github.com/gin-gonic/gin/blob/master/binding/binding.go#L88
+  // See more at https://github.com/robert-pkg/gin/blob/master/binding/binding.go#L88
   if c.ShouldBind(&person) == nil {
     log.Println(person.Name)
     log.Println(person.Address)
@@ -824,7 +824,7 @@ curl -X GET "localhost:8085/testing?name=appleboy&address=xyz&birthday=1992-03-1
 
 ### Bind Uri
 
-See the [detail information](https://github.com/gin-gonic/gin/issues/846).
+See the [detail information](https://github.com/robert-pkg/gin/issues/846).
 
 ```go
 package main
@@ -832,7 +832,7 @@ package main
 import (
   "net/http"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 type Person struct {
@@ -870,7 +870,7 @@ import (
   "fmt"
   "net/http"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 type testHeader struct {
@@ -902,7 +902,7 @@ func main() {
 
 ### Bind HTML checkboxes
 
-See the [detail information](https://github.com/gin-gonic/gin/issues/129#issuecomment-124260092)
+See the [detail information](https://github.com/robert-pkg/gin/issues/129#issuecomment-124260092)
 
 main.go
 
@@ -1185,7 +1185,7 @@ func main() {
 func main() {
   router := gin.Default()
   router.GET("/someDataFromReader", func(c *gin.Context) {
-    response, err := http.Get("https://raw.githubusercontent.com/gin-gonic/logo/master/color.png")
+    response, err := http.Get("https://raw.githubusercontent.com/robert-pkg/logo/master/color.png")
     if err != nil || response.StatusCode != http.StatusOK {
       c.Status(http.StatusServiceUnavailable)
       return
@@ -1305,7 +1305,7 @@ You may use custom delims
 
 #### Custom Template Funcs
 
-See the detail [example code](https://github.com/gin-gonic/examples/tree/master/template).
+See the detail [example code](https://github.com/robert-pkg/examples/tree/master/template).
 
 main.go
 
@@ -1316,7 +1316,7 @@ import (
   "net/http"
   "time"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 func formatAsDate(t time.Time) string {
@@ -1369,7 +1369,7 @@ r.GET("/test", func(c *gin.Context) {
 })
 ```
 
-Issuing a HTTP redirect from POST. Refer to issue: [#444](https://github.com/gin-gonic/gin/issues/444)
+Issuing a HTTP redirect from POST. Refer to issue: [#444](https://github.com/robert-pkg/gin/issues/444)
 
 ```go
 r.POST("/test", func(c *gin.Context) {
@@ -1540,8 +1540,8 @@ import (
   "log"
   "net/http"
 
-  "github.com/gin-gonic/autotls"
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/autotls"
+  "github.com/robert-pkg/gin"
 )
 
 func main() {
@@ -1565,8 +1565,8 @@ import (
   "log"
   "net/http"
 
-  "github.com/gin-gonic/autotls"
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/autotls"
+  "github.com/robert-pkg/gin"
   "golang.org/x/crypto/acme/autocert"
 )
 
@@ -1590,7 +1590,7 @@ func main() {
 
 ### Run multiple service using Gin
 
-See the [question](https://github.com/gin-gonic/gin/issues/346) and try the following example:
+See the [question](https://github.com/robert-pkg/gin/issues/346) and try the following example:
 
 ```go
 package main
@@ -1600,7 +1600,7 @@ import (
   "net/http"
   "time"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
   "golang.org/x/sync/errgroup"
 )
 
@@ -1683,7 +1683,7 @@ There are a few approaches you can use to perform a graceful shutdown or restart
 
 #### Third-party packages
 
-We can use [fvbock/endless](https://github.com/fvbock/endless) to replace the default `ListenAndServe`. Refer to issue [#296](https://github.com/gin-gonic/gin/issues/296) for more details.
+We can use [fvbock/endless](https://github.com/fvbock/endless) to replace the default `ListenAndServe`. Refer to issue [#296](https://github.com/robert-pkg/gin/issues/296) for more details.
 
 ```go
 router := gin.Default()
@@ -1700,7 +1700,7 @@ Alternatives:
 
 #### Manually
 
-In case you are using Go 1.8 or a later version, you may not need to use those libraries. Consider using `http.Server`'s built-in [Shutdown()](https://pkg.go.dev/net/http#Server.Shutdown) method for graceful shutdowns. The example below describes its usage, and we've got more examples using gin [here](https://github.com/gin-gonic/examples/tree/master/graceful-shutdown).
+In case you are using Go 1.8 or a later version, you may not need to use those libraries. Consider using `http.Server`'s built-in [Shutdown()](https://pkg.go.dev/net/http#Server.Shutdown) method for graceful shutdowns. The example below describes its usage, and we've got more examples using gin [here](https://github.com/robert-pkg/examples/tree/master/graceful-shutdown).
 
 ```go
 // +build go1.8
@@ -1716,7 +1716,7 @@ import (
   "syscall"
   "time"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 func main() {
@@ -1774,7 +1774,7 @@ import (
   "html/template"
   "net/http"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 //go:embed assets/* templates/*
@@ -1813,7 +1813,7 @@ func main() {
 }
 ```
 
-See a complete example in the `https://github.com/gin-gonic/examples/tree/master/assets-in-binary/example02` directory.
+See a complete example in the `https://github.com/robert-pkg/examples/tree/master/assets-in-binary/example02` directory.
 
 ### Bind form-data request with custom struct
 
@@ -1945,7 +1945,7 @@ enough to call binding at once.
 2. This feature is only needed for some formats -- `JSON`, `XML`, `MsgPack`,
 `ProtoBuf`. For other formats, `Query`, `Form`, `FormPost`, `FormMultipart`,
 can be called by `c.ShouldBind()` multiple times without any damage to
-performance (See [#1341](https://github.com/gin-gonic/gin/pull/1341)).
+performance (See [#1341](https://github.com/robert-pkg/gin/pull/1341)).
 
 ### Bind form-data request with custom struct and custom tag
 
@@ -2014,7 +2014,7 @@ import (
   "log"
   "net/http"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 var html = template.Must(template.New("https").Parse(`
@@ -2069,7 +2069,7 @@ import (
   "log"
   "net/http"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 func main() {
@@ -2101,7 +2101,7 @@ func main() {
 import (
   "fmt"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 func main() {
@@ -2144,7 +2144,7 @@ unnecessary computation.
 import (
   "fmt"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 func main() {
@@ -2170,7 +2170,7 @@ Look at the example below:
 import (
   "fmt"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 func main() {
@@ -2200,7 +2200,7 @@ package main
 import (
   "net/http"
 
-  "github.com/gin-gonic/gin"
+  "github.com/robert-pkg/gin"
 )
 
 func setupRouter() *gin.Engine {

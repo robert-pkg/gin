@@ -20,8 +20,8 @@ import (
 	"time"
 
 	"github.com/gin-contrib/sse"
-	"github.com/gin-gonic/gin/binding"
-	"github.com/gin-gonic/gin/render"
+	"github.com/robert-pkg/gin/binding"
+	"github.com/robert-pkg/gin/render"
 )
 
 // Content-Type MIME of the most common data formats.
@@ -38,10 +38,10 @@ const (
 )
 
 // BodyBytesKey indicates a default body bytes key.
-const BodyBytesKey = "_gin-gonic/gin/bodybyteskey"
+const BodyBytesKey = "_robert-pkg/gin/bodybyteskey"
 
 // ContextKey is the key that a Context returns itself for.
-const ContextKey = "_gin-gonic/gin/contextkey"
+const ContextKey = "_robert-pkg/gin/contextkey"
 
 // abortIndex represents a typical value used in abort functions.
 const abortIndex int8 = math.MaxInt8 >> 1
